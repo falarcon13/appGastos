@@ -1,0 +1,97 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.modal {
+    position: absolute;
+    background-color: v.$black;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+
+
+    &__cerrar-modal {
+        position: absolute;
+        cursor: pointer;
+        right: 3rem;
+        top: 3rem;
+        width: 3rem;
+        height: 3rem;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &-formulario {
+        margin-top: 5rem;
+        max-width: 60rem;
+        width: 90%;
+        transition-property: all;
+        transition-duration: 300ms;
+        transition-timing-function: ease-in;
+        opacity: 0;
+
+        @include m.tablet {
+            max-width: 90rem;
+            width: 50rem;
+        }
+
+        &__campo{
+            display: grid;
+            margin-bottom: 2rem;
+            label {
+                color: v.$white;
+                font-size: 2.8rem;
+                margin-bottom: 2rem;
+                color: v.$secondary;
+            }
+            select {
+                flex: 1;
+                padding: 1rem;
+                border: none;
+                border-radius: 1rem;
+                text-align: center;
+                background-color: v.$white;
+
+            }
+
+            option {
+                color: v.$secondary;
+                font-weight: 700;
+            }
+        }
+
+        legend {
+            font-size: 4rem;
+            text-align: center;
+            display: block;
+            text-transform: uppercase;
+            color: v.$white;
+            margin-bottom: 4rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid v.$secondary;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            // background-color: v.$gray;
+            border-radius: .5rem;
+            padding: 1rem;
+            border: none;
+            flex: 1;
+            font-size: 1.6rem;
+        }
+    }
+
+    &-animar {
+        position: relative;
+        opacity: 1;
+    }
+
+    &-cerrar {
+        position: relative;
+        opacity: 0;
+    }
+}

@@ -1,0 +1,68 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.control {
+    @include m.desktop {
+        @include m.grid(2,1 );
+    }
+
+    &-gastado,
+    &-disponible,
+    &-presupuesto {
+        font-family: v.$numberFont;
+    }
+
+    &-gastado {
+        color: red;
+    }
+
+    &-disponible {
+        color: v.$alternative;
+    }
+
+    &-presupuesto {
+        color: v.$secondary;
+    }
+
+    &__presupuesto{
+        background-color: v.$gray;
+        border-radius: .5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 1rem;
+        padding: 1.5rem;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+
+        @include m.tablet {
+            gap: 3rem;
+            padding: 3rem;
+            justify-content: center;
+            // align-items: center;
+        }
+
+        &-body{
+            p {
+                font-weight: 400;
+                font-size: 1.5rem;
+                align-items: flex-end;
+                color: v.$gray-darken;
+            }
+
+            @include m.tablet {
+                p {
+                    font-weight: 700;
+                    font-size: 2.5rem;
+                    color: v.$gray-darken;
+                }
+            }
+        }
+        &-img{
+            width: 40%;
+            @include m.tablet {
+                width: 50%;
+            }
+        }
+    }
+}
+

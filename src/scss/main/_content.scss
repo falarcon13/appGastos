@@ -1,0 +1,16 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.content{
+    padding: none;
+
+    @include m.tablet {
+        margin-left: 210px;
+    }
+}
+
+.fijar {
+    overflow: hidden;
+    height: 100vh;
+    ;
+}

@@ -1,0 +1,22 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.main {
+    &__card{
+        background-color: v.$alternative; 
+        border-radius: 1.5rem;
+        font-weight: 700;
+        color: v.$white;
+        padding: 2rem;
+    }
+
+    &__title-card{
+        font-size: 3rem;
+    }
+
+    &__body-card{
+        font-size: 5rem;
+    }
+
+
+}

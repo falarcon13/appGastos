@@ -1,0 +1,30 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.dashboard {
+    &__title {
+        color: v.$secondary;
+        font-size: 3rem;
+
+        @include m.tablet {
+            font-size:4rem;
+        }
+    }
+
+
+    &__content{
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 5rem;
+        @include m.desktop {
+            @include m.grid(2 , 1);
+        }
+
+        &-img{
+            width: 70% 70%;
+            @include m.desktop {
+                width: auto;
+            }
+        }
+    }
+}
