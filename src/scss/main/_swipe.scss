@@ -1,0 +1,24 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.swipe-action__leading {
+    background-color: v.$secondary;
+    margin-top: 2rem;
+    color: v.$white;
+    font-weight: 700;
+}
+
+.swipe-action__trailing {
+    background-color: #db2777;
+    margin-top: 2rem;
+    color: v.$white;
+    font-weight: 700;
+}
+
+.swipeable-list .swipe-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.4rem;
+    text-align: right;
+}

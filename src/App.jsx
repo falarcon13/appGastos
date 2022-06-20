@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // Mis componentes
 import Dashboard from "./components/Dashboard";
 import { DatosPresupuesto } from './components/DatosPresupuesto';
@@ -20,7 +20,19 @@ function App() {
   const [modal, setModal] = useState(false);
   const [animarModal, setAnimarModal] = useState(false);
 
+  const [gastoEditar, setGastoEditar] = useState({});
+
+  useEffect(() => {
+    if(Object.keys(gastoEditar).length > 0){
+      setModal(!modal);
+      setTimeout(() => {
+        setAnimarModal(true);
+      }, 400);
+    }
+  }, [gastoEditar]);
+
   const handleNuevoGasto = () => {
+    setGastoEditar({});
     setModal(!modal);
     setTimeout(() => {
       setAnimarModal(true);
@@ -46,6 +58,7 @@ function App() {
           setPresupuesto={setPresupuesto}
           isValidPresupuesto={isValidPresupuesto}
           setIsValidPresupuesto={setIsValidPresupuesto}
+          setGastosEditar={setGastoEditar}
         />
         }
         {isPresupuestoActive && <DatosPresupuesto/>}
@@ -65,6 +78,8 @@ function App() {
           animarModal={animarModal}
           setAnimarModal={setAnimarModal}
           guardarGasto={guardarGasto}
+          gastoEditar={gastoEditar}
+          setGastoEditar={setGastoEditar}
         />}
         </div>
     </div>

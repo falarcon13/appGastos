@@ -4,7 +4,11 @@ import ListadoGastos from './ListadoGastos';
 import IconoGRafica from '../img/icono_grafica.svg';
 import { formatCantidad } from '../helpers/formatCantidad';
 
-const ControlPresupuesto = ({presupuesto, gastos}) => {
+const ControlPresupuesto = ({
+        presupuesto,
+        gastos,
+        setGastosEditar,
+    }) => {
 
     const [disponible, setDisponible] = useState(0);
     const [gastado, setGastado] = useState(0);
@@ -24,8 +28,8 @@ const ControlPresupuesto = ({presupuesto, gastos}) => {
                 <div className="control__presupuesto animate__animated animate__fadeIn">
                     <div className="control__presupuesto-body">
                         <p>Presupuesto: <br /> <span className='control-presupuesto'> {formatCantidad(presupuesto)}</span></p>
-                        <p>Disponible: <br /> <span className='control-disponible'>+ {formatCantidad(disponible)}</span></p>
-                        <p>Gastado: <br /> <span className='control-gastado'> - {formatCantidad(gastado)}</span></p>
+                        <p>Disponible: <br /> <span className='control-disponible'>{formatCantidad(disponible)}</span></p>
+                        <p>Gastado: <br /> <span className='control-gastado'> -{formatCantidad(gastado)}</span></p>
                     </div>
                     <div className="control__presupuesto-img">
                         <img src={ IconoGRafica} alt="imagen grafica" />
@@ -37,7 +41,10 @@ const ControlPresupuesto = ({presupuesto, gastos}) => {
                 </div>
             </div>
             <main className="gastos">
-                <ListadoGastos gastos={gastos}/>
+                <ListadoGastos
+                    gastos={gastos}
+                    setGastosEditar={setGastosEditar}
+                />
             </main>
         </>
     )

@@ -1,18 +1,38 @@
 import { useState } from 'react';
 import Mensaje from './Mensaje';
 import IconoCerrar from '../img/cerrar.svg';
+import { useEffect } from 'react';
 
-const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
+const Modal = ({ 
+        setModal,
+        animarModal,
+        setAnimarModal,
+        guardarGasto,
+        gastoEditar,
+        setGastoEditar,
+    }) => {
 
     const [mensaje, setMensaje] = useState('');
     const [descripcion, setDescripcion] = useState('');
     const [cantidad, setCantidad] = useState('');
     const [categoria, setCategoria] = useState('');
+    const [id, setId] = useState()
+
+    useEffect(() => {
+        if(Object.keys(gastoEditar).length > 0){
+            setDescripcion(gastoEditar.descripcion);
+            setCantidad(gastoEditar.cantidad);
+            setCategoria(gastoEditar.categoria);
+            setId(gastoEditar.id);
+        }
+    }, []);
+    
 
     const ocultarModal = () => {
         setAnimarModal(false);
         setTimeout(() => {
             setModal(false);
+            setGastoEditar({});
         }, 400);
     }
 
@@ -31,7 +51,8 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
         guardarGasto({
             descripcion,
             cantidad,
-            categoria
+            categoria,
+            id
         });
 
         ocultarModal();
@@ -50,8 +71,8 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
             <form 
                 onSubmit={handleSubmit}
                 className={`contenedor modal-formulario ${animarModal ? "modal-animar" : "modal-cerrar"}`}>
-                <legend>Nuevo Gasto</legend>
-
+                
+                <legend>{gastoEditar.descripcion ? "Editar Gasto" : "Nuevo Gasto"}</legend>
                 {mensaje && <Mensaje >{mensaje}</Mensaje>}
 
                 <div className="modal-formulario__campo">
@@ -103,7 +124,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
                     <input
                     className='btn-gray'
                         type="submit"
-                        value='Agregar'
+                        value={gastoEditar.descripcion ? "Guardar Cambio" : "Agregar"}
                     />
                 </div>
             </form>

@@ -11,7 +11,9 @@ const Dashboard = ({
         gastos,
         setPresupuesto,
         isValidPresupuesto,
-        setIsValidPresupuesto, }) => {
+        setIsValidPresupuesto,
+        setGastosEditar,
+    }) => {
 
     const [mensaje, setMensaje] = useState('');
 
@@ -28,6 +30,7 @@ const Dashboard = ({
                     <ControlPresupuesto
                         presupuesto={presupuesto}
                         gastos={gastos}
+                        setGastosEditar={setGastosEditar}
                     />
                 </>
 
