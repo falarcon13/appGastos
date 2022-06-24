@@ -1,0 +1,51 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.registros{
+    @include m.grid(2 , 1);
+
+    @include m.tablet {
+        @include m.grid(4 , 1);
+    }
+    @include m.desktop {
+        @include m.grid(7 , 1);
+    }
+
+}
+
+.registro {
+    cursor: pointer;
+    margin: 2rem;
+    &__grafica {
+        width: 100px;
+    }
+
+    &__titulo {
+        margin: 1rem 0;
+        font-size: 2rem;
+    }
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: v.$black;
+    color: v.$white;
+    font-family: v.$numberFont;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}

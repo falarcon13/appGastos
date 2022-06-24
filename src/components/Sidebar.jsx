@@ -35,7 +35,6 @@ const Sidebar = ({ setIsDashboardActive, setIsPresupuestoActive} ) => {
                     <span><VscProject/></span>
                     Resumen
                 </li>
-                <li className="sidebar__menu-item"><span><VscChecklist/></span> Categorias</li>
             </ul>
         </div>
     )

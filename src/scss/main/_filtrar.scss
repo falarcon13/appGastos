@@ -1,0 +1,77 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.filtro{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include m.desktop {
+        flex-direction:row;
+        align-items: center;
+    }
+    border-radius: .5rem;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+    label {
+        font-size: 3rem;
+        font-weight: 700;
+
+    }
+
+    select{
+        flex: 1;
+        padding: 1rem;
+        border-radius: .5rem;
+        background-color: v.$white;
+    }
+
+    option {
+        text-align: center;
+        color: v.$secondary;
+    }
+
+    &__table{
+        margin: 3rem 1rem;
+        @include m.grid(1 ,1 );
+        gap: 3rem;
+
+        @include m.tablet {
+            @include m.grid(2,1);
+        }
+
+        @include m.desktop {
+            @include m.grid(4 ,1 );
+        }
+    }
+
+    &-card{
+        width: 100%;
+        @include m.desktop {
+            width: auto;
+        }
+        background-color: v.$gray;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        color: v.$gray-darken;
+        border-radius: 2rem;
+        padding: 3rem;
+
+        &__categoria{
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        &__cantidad {
+            color: v.$alternative;
+            font-family: v.$numberFont;
+        }
+
+        &__fecha{
+            font-family: v.$numberFont;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+    }
+}
+
+

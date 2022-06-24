@@ -2,43 +2,58 @@
 @use '../base/mixins' as m;
 
 .gasto {
-    padding: 3rem;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+    padding: 2rem;
     border-radius: .5rem;
     color: v.$gray-darken;
     background-color: v.$gray;
-    margin-top: 2rem;
+    margin-top: 1rem;
     display: flex;
     flex-direction: row;
     align-items: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    cursor: pointer;
 
     &-titulo {
         color: v.$secondary;
+        background-color: v.$gray;
         font-size: 2.5rem;
-        margin: 1rem;
+        margin: 1rem 0;
+        border-radius: .5rem;
+        padding: 2rem;
     }
 
     &-imagen {
-        width: 150px;
+        width: 70px;
         height: auto;
         margin-right: 3rem;
     }
 
     &-contenido {
         width: 100%;
-        &__categoria {
-            font-size: 3rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: v.$gray-darken;
-        }
-        &__datos {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        display: flex;
+        flex-direction: column;
 
-            @include m.phone {
+        &__categoria {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 0;
+            color: v.$secondary;
+            text-transform: uppercase;
+        }
+
+        &__datos {
+            margin: .5rem 0;
+            
+            @include m.tablet {
+                display: flex;
                 flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            &-descripcion,
+            &-cantidad {
+                font-size: 1.5rem;
+                margin: 0;
             }
 
             &-cantidad {
@@ -46,26 +61,20 @@
                 font-size: 2rem;
                 font-weight: 700;
                 color: v.$alternative;
-
-                @include m.desktop {
-                    font-size: 3rem;
-                }
             }
         }
-
         &__fecha{
             font-family: v.$numberFont;
             font-weight: 700;
             text-transform: capitalize;
             font-style: italic;
             font-size: 1.3rem;
-            margin-top: 2rem;
+            margin: 0;
 
             span {
                 font-weight: 400;
             }
         }
-
     }
 }
 

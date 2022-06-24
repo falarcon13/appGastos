@@ -12,6 +12,12 @@
         font-family: v.$numberFont;
     }
 
+    &__grafica {
+        width: 50%;
+        margin: auto auto;
+        font-family: v.$numberFont;
+    }
+
     &-gastado {
         color: red;
     }
@@ -59,10 +65,12 @@
         }
         &-img{
             width: 40%;
+            margin: auto auto;
             @include m.tablet {
                 width: 50%;
             }
         }
+
     }
 }
 

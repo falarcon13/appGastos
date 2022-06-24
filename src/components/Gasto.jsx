@@ -20,7 +20,7 @@ import {
     formatearFecha,
 } from "../helpers/formatCantidad";
 
-const Gasto = ({ gasto, setGastosEditar }) => {
+const Gasto = ({ gasto, setGastosEditar, eliminarGasto }) => {
 
     const listaIconos = {
         Ahorro : IconoAhorro,
@@ -32,7 +32,7 @@ const Gasto = ({ gasto, setGastosEditar }) => {
         Gastos : IconoGastos,
     }
 
-    const {descripcion, cantidad, categoria, fecha} = gasto;
+    const {descripcion, cantidad, categoria, id, fecha} = gasto;
 
     const leadingActions = () => (
         <LeadingActions>
@@ -47,7 +47,8 @@ const Gasto = ({ gasto, setGastosEditar }) => {
     const trailingActions = () => (
         <TrailingActions>
             <SwipeAction
-                onClick={() => console.log('Eliminar')}
+                onClick={() => eliminarGasto(id) }
+                destructive={true}
             >
                 Eliminar
             </SwipeAction>
@@ -72,7 +73,6 @@ const Gasto = ({ gasto, setGastosEditar }) => {
                         <p className="gasto-contenido__categoria">
                             {categoria}
                         </p>
-                        <hr />
                         <div className="gasto-contenido__datos">
                             <p className='gasto-contenido__datos-descripcion'>
                                 {descripcion}

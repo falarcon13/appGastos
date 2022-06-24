@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import ListadoGastos from './ListadoGastos';
 // Otros
 import IconoGRafica from '../img/icono_grafica.svg';
@@ -8,6 +10,9 @@ const ControlPresupuesto = ({
         presupuesto,
         gastos,
         setGastosEditar,
+        eliminarGasto,
+        porcentaje,
+        setPorcentaje,
     }) => {
 
     const [disponible, setDisponible] = useState(0);
@@ -17,8 +22,13 @@ const ControlPresupuesto = ({
         const totalGastado = gastos.reduce( (total, gasto) => gasto.cantidad + total, 0 );
         const totalDisponible = presupuesto - totalGastado;
 
+        const nuevoPorcentaje = ( ((presupuesto - totalDisponible) / presupuesto * 100).toFixed(2));
+
         setGastado(totalGastado);
         setDisponible(totalDisponible);
+        setTimeout(() => {
+            setPorcentaje(nuevoPorcentaje);
+        }, 700);
 
     }, [gastos]);
 
@@ -37,13 +47,21 @@ const ControlPresupuesto = ({
 
                 </div>
                 <div className="control__grafica">
-                    <p>grafica</p>
+                    <CircularProgressbar
+                        text={porcentaje +'%'}
+                        value={porcentaje}
+                        styles={buildStyles({
+                            pathColor: '#00b4cc',
+                            trailColor: '#bebaba',
+                        })}
+                    />
                 </div>
             </div>
             <main className="gastos">
                 <ListadoGastos
                     gastos={gastos}
                     setGastosEditar={setGastosEditar}
+                    eliminarGasto={eliminarGasto}
                 />
             </main>
         </>
